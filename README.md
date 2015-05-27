@@ -51,17 +51,29 @@ Exit
 
   apt-get install apache2 -y
 
+После настройки rpi появится возможность 
+загружать файлы на rpi.
+
+Склонируйте репозиторий на инструментальную ЭВМ
+Это можно сделать командой:
+
+git clone https://github.com/alllecs/raspberry_relay.git
+
 Перенос файлов на raspberry pi. По необходимости
 создайте отсутствующие каталоги на rasperry pi.
 
 Перенесите файл menu.sh из каталога txt/ в каталог /usr/local/bin/
+  scp /txt/menu.sh /usr/local/bin/
 
 Перенестие файл relay.sh из каталога bin/  в каталог /var/www/
+  scp /bin/relay.sh /var/www/
 
 Перенесите файл index.html из каталога web/ в каталог /var/www/
+  scp /web/index.html /var/www/
 
 Перенестие все файлы кроме index.html из каталога web/
 в каталог /var/www/web/ 
+  scp /web/* /var/www/web/
 
 Для использования веб интерфейса необходимо перейти по ссылке
 [RaspberryPi](http://192.168.1.2/)
