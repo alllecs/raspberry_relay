@@ -16,7 +16,7 @@
 
 	</head>
 
-	<body>
+	<body bgcolor="#F5F5F5">
 	<?php
 
 

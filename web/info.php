@@ -4,7 +4,7 @@
 	</head>
 	
 
-	<body>
+	<body bgcolor="#F5F5F5">
 	<center>
 	<p><h2>Информация об устройстве</h2></p>
 	<br>

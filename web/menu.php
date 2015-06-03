@@ -4,7 +4,7 @@
 		<title>Устройство управления</title>
 	</head>
 
-	<body>
+	<body bgcolor="#F5F5F5">
 
 		<ol start="1">
 			<li><a href="home.php" target="window-1">Главная</a></li>
