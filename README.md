@@ -101,7 +101,7 @@ iface eth1 inet static
 ````
   ssh pi@192.168.1.2
 ````
-Для подключения rpi к интернету необходимо выполнить проброс
+Для подключения rpi к интернету необходимо выполнить тунель
 это можно сделать командой на ПК:
 ````
   ssh localhost -N -L ip_адрес_ПК:порт:прокси:порт
@@ -167,7 +167,7 @@ iface eth1 inet static
 ````
   scp ${REPO}/txt/menu.sh rpi:/usr/local/bin/
 ````
-Перенестие файл relay.sh из каталога bin/  в каталог /var/www/
+Перенесите файл relay.sh из каталога bin/  в каталог /var/www/
 ````
   scp ${REPO}/bin/relay.sh rpi:/var/www/
 ````
@@ -175,14 +175,14 @@ iface eth1 inet static
 ````
   scp ${REPO}/web/index.php rpi:/var/www/
 ````
-Перенестие все файлы кроме index.php из каталога web/
+Перенесите все файлы кроме index.php из каталога web/
 в каталог /var/www/web/ 
 ````
   scp ${REPO}/web/*.php rpi:/var/www/web/
 ````
 Для использования веб интерфейса необходимо перейти по ссылке
 [RaspberryPi](http://192.168.1.2/)
-При необходимости пропишите в прокси браузера:
+По необходимости запретите в браузере доступк к rpi:
 ````
   192.168.1.2
 ````
@@ -194,9 +194,9 @@ iface eth1 inet static
 ````
   raspberry
 ````
-Запустите файл menu.sh по адресу /usr/bin/menu.sh командой:
+Запустите файл menu.sh по адресу /usr/local/bin/menu.sh командой:
 ````
-  /usr/bin/menu.sh
+  /usr/local/bin/menu.sh
 ````
 В меню выберите необходимый вам раздел.
 
