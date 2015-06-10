@@ -1,5 +1,7 @@
 #!/bin/bash
 
+##Запускать от root.
+
 SD=$1
 NAME=2015-05-05-raspbian-wheezy
 USER=alecs
@@ -35,11 +37,13 @@ echo '	User root' >> /home/${USER}/.ssh/config
 git clone https://github.com/alllecs/raspberry_relay.git
 
 REPO=/home/${USER}/raspberry
-scp ${REPO}/txt/menu.sh rpi:/usr/local/bin/
+scp ${REPO}/txt/menu.sh /mnt/usr/local/bin/
 
-scp ${REPO}/bin/relay.sh rpi:/var/www/
+scp ${REPO}/bin/relay.sh /mnt/var/www/
 
-scp ${REPO}/web/index.php rpi:/var/www/
+scp ${REPO}/web/index.php /mnt/var/www/
 
-scp ${REPO}/web/*.php rpi:/var/www/web/
+mkdir /mnt/var/www/web
+scp ${REPO}/web/*.php /mnt/var/www/web/
 
+umount /dev/sdb2
