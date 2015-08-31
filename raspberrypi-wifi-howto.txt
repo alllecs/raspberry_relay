@@ -1,0 +1,61 @@
+		Raspberry Pi WiFi HOWTO
+	Alexander Smirnov <alllecs@yandex.ru>
+			27/08/2015
+
+1. Об этом руководстве
+
+
+2. Установка необходимых пакетов
+Для настройки raspberry pi как точки доступа
+необходимо выполнить:
+
+	apt-get install hostapd hostap-utils iw bridge-utils resolvconf
+	apt-get install isc-dhcp-server iptables-persistent
+
+3. Подключение Wi-Fi "свистка"
+Подключаем USB-донгл и смотрим устройства
+с помощью lsusb
+
+Необходимые программы:
+ifconfig — включение беспроводного адаптера,
+iwlist — список доступных беспроводных сетей,
+iwconfig — конфигурация беспроводного соединения,
+dhclient — получения IP-адреса через dhcp,
+wpa_supplicant — для использования WPA аутентификации.
+
+Просмотр сетевых интерфесов wlan
+
+	iwconfig
+
+По необходимости редактируем /etc/network/interfaces:
+Должно быть:
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+
+Для сканирование Wi-Fi сетей
+необходимо выполнить:
+
+	sudo iwlist wlan0 scan
+
+Чтобы отфильтровать строчки с названиями
+необходимо выполнить:
+
+	sudo iwlist wlan0 scan | grep ESSID
+
+Чтобы внести информацию о точке доступа
+необходимо перейти в файл /etc/wpa_supplicant/wpa_supplicant.conf
+Пропустить две первые строки, а именно:
+
+	ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+	update_config=1
+
+И добавить:
+
+	network={
+        ssid="Имя сети"
+        psk="Пароль"
+        key_mgmt=WPA-PSK
+}
