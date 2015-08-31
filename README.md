@@ -1,29 +1,29 @@
-#Веб и текстовый интерфейс управления 4мя реле с помощью raspberry pi
+#Веб и текстовый интерфейс управления 4 реле с помощью Raspberry Pi
 
-На SD карту raspberry pi(rpi) установлен Raspbian 
-c [официального сайта](https://www.raspberrypi.org/downloads/)
+На SD карту Raspberry Pi(rpi) установливаем Raspbian 
+c [официального сайта](https://www.raspberrypi.org/downloads/).
 
-проверяем подключение SD карты к компьютеру с помощью команды:
+Проверяем подключение SD карты к ПК с помощью команды:
 ````
   dmesg
 ````
 и находим строку с нужным /dev/sd?
 для каждого она будет своя.
 
-Заливаем на SD карту скаченный Raspbian img файл
+Заливаем на SD карту, скаченный Raspbian img файл,
 с помощью команды:
 ````
   dd bs=4M if=*-raspbian-wheezy.img of=/dev/sd?
 ````
-Вставляем подготовленную флешку в raspberri pi.
+Вставляем подготовленную флешку в rpi.
 
-Подключаемся к raspberry pi по UART.
+Подключаемся к rpi по UART.
 Для этого:
 
 На ПК заходим под root пользователем.
 Командой su.
 
-Подключаемся к rpi и настраиваем по minicom командой:
+Подключаемся к rpi и настраиваем minicom командой:
 ````
   minicom -s USB0
 ````
@@ -47,7 +47,7 @@ c [официального сайта](https://www.raspberrypi.org/downloads/)
   Логин: pi
   Пароль: raspberry
 ````
-Далее необходимо зайти под суперпользователем на rpi
+Далее необходимо зайти под суперпользователем на rpi,
 с помощью команды:
 ````
   sudo bash
@@ -57,7 +57,7 @@ c [официального сайта](https://www.raspberrypi.org/downloads/)
 ````
   vi /etc/network/interfaces
 ````
-Вписываем:
+Добавить или заменить:
 
 ````
 auto eth0
@@ -80,7 +80,7 @@ iface eth0 inet static
 нажмите Enable
 для выхода нажмите Finish
 
-Подключите raspberry pi к ПК по интерфейсу Ethernet.
+Подключите rpi к ПК по интерфейсу Ethernet.
 
 Для настройки соединения ПК и rpi откройте файл
 /etc/network/interfaces на вашем ПК
@@ -106,7 +106,7 @@ iface eth1 inet static
 ````
   ssh localhost -N -L ip_адрес_ПК:порт:прокси:порт
 ````
-на rpi необходимо выполнить:
+на rpi выполнить:
 ````
   export http_proxy=http://ip_адрес_ПК:порт
 ````
@@ -150,7 +150,7 @@ iface eth1 inet static
   sudo bash
   cp ~pi/id_rsa.pub ~/.ssh/authorized_keys
 ````
-Добавьте в файл на своем ПК .ssh/config
+Добавьте в файл на своем ПК .ssh/config:
 ````
   Host rpi
     HostName 192.168.1.2
@@ -160,7 +160,7 @@ iface eth1 inet static
 ````
   ssh rpi
 ````
-В дальнейшем изложении переменная REPO хранит путь к репозиторию 
+В дальнейшем изложении переменная REPO хранит путь к репозиторию: 
 /home/user/raspberry/
 
 Перенесите файл menu.sh из каталога txt/ в каталог /usr/local/bin/
