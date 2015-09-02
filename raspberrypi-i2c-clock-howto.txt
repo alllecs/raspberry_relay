@@ -78,10 +78,10 @@ Tiny RTC на базе микросхемы 13072
 
 Обновите hwclock, для этого выполните:
 
-	/sbin/hwclock --systohc
+	/sbin/hwclock --hctosys
 
 Для синхронизации времени добавьте в /etc/rc.local
 строку перед 'exit 0':
 
-	echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-1/new_device on Model B
+	echo ds1307 0x68 > /sys/class/i2c-adapter/i2c-1/new_device 
 

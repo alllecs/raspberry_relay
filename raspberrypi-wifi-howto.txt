@@ -6,7 +6,7 @@
 
 
 2. Установка необходимых пакетов
-Для настройки raspberry pi как точки доступа
+Для настройки Raspberry Pi(rpi) как точки доступа
 необходимо выполнить:
 
 	apt-get install hostapd hostap-utils iw bridge-utils resolvconf
@@ -59,3 +59,23 @@ iface default inet dhcp
         psk="Пароль"
         key_mgmt=WPA-PSK
 }
+
+В файле /etc/network/interfaces
+заполнить строки по примеру:
+
+allow-hotplug wlan0
+auto wlan0
+
+iface wlan0 inet dhcp
+   wpa-ssid "Your Network SSID"
+   wpa-psk "Your Password"
+
+после этого выполнить:
+
+	sudo service networking reload
+
+проверить подключение можно с помощью команды
+
+	ifconfig
+
+wlan0 получит ip адрес.
