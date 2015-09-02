@@ -1,10 +1,11 @@
 #!/bin/bash
 
 ##Запускать от root.
+##При необходимости прописать прокси: http_proxy=http://прокси:порт
 
 SD=$1
 NAME=2015-05-05-raspbian-wheezy
-USER=alecs
+USER=$2
 set -x
 
 if [ -z "$SD" ]; then
@@ -14,10 +15,6 @@ if [ -z "$SD" ]; then
 	exit 1
 fi
 
-mkdir raspberry
-cd raspberry
-
-export http_proxy=http://proxy.cs.niisi.ras.ru:3128
 wget http://director.downloads.raspberrypi.org/raspbian/images/raspbian-2015-05-07/${NAME}.zip
 unzip ${NAME}.zip
 
@@ -32,9 +29,6 @@ cat  www-data ALL=(ALL) NOPASSWD: ALL >> /mnt/etc/sudoers
 echo 'Host rpi' >> /home/${USER}/.ssh/config 
 echo '	HostName 192.168.1.2' >> /home/${USER}/.ssh/config 
 echo '	User root' >> /home/${USER}/.ssh/config
-
-
-git clone https://github.com/alllecs/raspberry_relay.git
 
 REPO=/home/${USER}/raspberry
 scp ${REPO}/txt/menu.sh /mnt/usr/local/bin/
