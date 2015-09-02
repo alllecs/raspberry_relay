@@ -1,4 +1,13 @@
-#Веб и текстовый интерфейс управления 4 реле с помощью Raspberry Pi
+#Блок управления нагрузками
+
+Блок управления нагрузками предназначен
+для работы в качестве промежуточного устройства
+для подачи нагрузки и управления через веб и текстовый интерфейс.
+
+Устройсвто предназначено для управления силовыми элеткроприборами
+и может быть использовано в быту.
+
+В этом репозитории материалы относящиеся к работе блока управления нагрузками.
 
 На SD карту Raspberry Pi(rpi) установливаем Raspbian 
 c [официального сайта](https://www.raspberrypi.org/downloads/).
@@ -15,7 +24,7 @@ c [официального сайта](https://www.raspberrypi.org/downloads/).
 ````
   dd bs=4M if=*-raspbian-wheezy.img of=/dev/sd?
 ````
-Вставляем подготовленную флешку в rpi.
+Вставляем подготовленную SD карту в rpi.
 
 Подключаемся к rpi по UART.
 Для этого:
@@ -69,7 +78,6 @@ iface eth0 inet static
         broadcast 192.168.1.255
 ````
 Перезапустить rpi.
-
 
 Для включение ssh сервера на rpi выполните команду:
 ````
@@ -132,23 +140,18 @@ iface eth1 inet static
 ````
   git clone https://github.com/alllecs/raspberry_relay.git
 ````
-Перенос файлов на raspberry pi. По необходимости
+Перенос файлов на Raspberry Pi. По необходимости
 создайте отсутствующие каталоги на rasperry pi.
 
 Для удобства подключения и переноса файлов на rpi 
 скопируйте файл .ssh/id_rsa.pub со своего ПК
-на raspberry pi в файл .ssh/authorized_keys
+на Raspberry Pi в файл .ssh/authorized_keys
 с помощью команд:
 ````
-  scp .ssh/id_rsa.pub pi@192.168.1.2:
+  cd .ssh
+  ssh-copy-id -i id_rsa.pub pi@192.168.1.2:
+  pi@192.168.1.2 password: raspberry
 
-  Пароль: raspberry
-
-  ssh pi@192.168.1.2
-  Пароль: raspberry
-
-  sudo bash
-  cp ~pi/id_rsa.pub ~/.ssh/authorized_keys
 ````
 Добавьте в файл на своем ПК .ssh/config:
 ````
@@ -156,7 +159,7 @@ iface eth1 inet static
     HostName 192.168.1.2
     User root
 ````
-После чего можно подключаться к raspberry pi командой:
+После чего можно подключаться к Raspberry Pi командой:
 ````
   ssh rpi
 ````
