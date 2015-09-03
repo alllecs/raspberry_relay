@@ -22,7 +22,12 @@ lcd.lcd_clear()
 def newfunc(gpionum):
 	f1 = open('/sys/class/gpio/gpio%d/value' % gpionum)
 	# "gpio%d/value" % (gpionum,)
-	return f1.readline(1)
+	if f1:
+		return Off
+	else:
+		return On
+
+#	return f1.readline(1)
 
 #f1 = open('/sys/class/gpio/gpio5/value')
 f2 = open('/sys/class/gpio/gpio6/value')
