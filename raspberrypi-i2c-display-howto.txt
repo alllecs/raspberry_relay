@@ -276,7 +276,7 @@ lcd.lcd_display_string("IP: " + get_ip_address('eth0'), 4)
 
 Добавить в конец:
 
-	* * * * * /home/pi/display_420/file.py
+	* * * * * /home/pi/raspberry_relay/i2c/file.py
 
 10. Для автоматического экспорте gpio пинов:
 Создайте файл startpin.sh с содержимым:
