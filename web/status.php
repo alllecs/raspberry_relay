@@ -64,7 +64,7 @@
 			}
 		?>
 		<table border="1">
-		<tr><th>№ реле</th><th>Cостояние</th><th>Export</th><th>Unexport</th><th>№ пина</th></tr>
+		<tr><th>№ реле</th><th>Cостояние</th><th>Export</th><th>Unexport</th><th>GPIO</th></tr>
 		<tr><td>1</td>
 			<td>
 			<?php ca(5);?>
