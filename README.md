@@ -153,6 +153,10 @@ iface eth1 inet static
   ssh-copy-id -i id_rsa.pub pi@192.168.1.2:
   pi@192.168.1.2 password: raspberry
 
+  scp id_rsa.pub pi@192.168.1.2:
+  ssh pi@192.168.1.2
+  sudo bash
+  cat /home/pi/id_rsa.pub >> /root/.ssh/authorized_keys
 ````
 Добавьте в файл на своем ПК .ssh/config:
 ````
