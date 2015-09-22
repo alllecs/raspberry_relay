@@ -46,72 +46,72 @@ function res {
 
 function reset {
        	clear
-        echo "Reset"
+	echo "Reset"
 
-        options=("Reset 1 Relay" "Reset 2 Relay" "Reset 3 Relay" "Reset 4 Relay" "Reset ALL" "EXIT")
-        select on in "${options[@]}"
+	options=("Reset 1 Relay" "Reset 2 Relay" "Reset 3 Relay" "Reset 4 Relay" "Reset ALL" "EXIT")
+	select on in "${options[@]}"
 
-        do
-                case $on in
-                        "Reset 1 Relay")
+	do
+		case $on in
+			"Reset 1 Relay")
 				res $PORT1 
 				;;
-                        "Reset 2 Relay")
-                                res $PORT2
+			"Reset 2 Relay")
+				res $PORT2
 				;;
-                        "Reset 3 Relay")
-                                res $PORT3
+			"Reset 3 Relay")
+				res $PORT3
 				;;
-                        "Reset 4 Relay")
-                                res $PORT4
+			"Reset 4 Relay")
+				res $PORT4
 				;;
-                        "Reset ALL")
-                                res $PORT1 $PORT2 $PORT3 $PORT4
+			"Reset ALL")
+				res $PORT1 $PORT2 $PORT3 $PORT4
 				;;
-                        "EXIT")
-                                break
-                                ;;
-                         *)
+			"EXIT")
+				break
+				;;
+			 *)
 				echo "Make a Selection"
 				;;
-	        esac
+		esac
 	done
 }
 
 function pow {
        	clear
-        echo "Reset"
+	echo "Reset"
 
-        options=("Relay 1" "Relay 2" "Relay 3" "Relay 4" "ALL" "EXIT")
-        select on in "${options[@]}"
+	options=("Relay 1" "Relay 2" "Relay 3" "Relay 4" "ALL" "EXIT")
+	select on in "${options[@]}"
 
-        do
-                case $on in
-                        "Relay 1")
+	do
+		case $on in
+			"Relay 1")
 				onoff $1 $PORT1 
 				;;
-                        "Relay 2")
-                                onoff $1 $PORT2
+			"Relay 2")
+				onoff $1 $PORT2
 				;;
-                        "Relay 3")
-                                onoff $1 $PORT3
+			"Relay 3")
+				onoff $1 $PORT3
 				;;
-                        "Relay 4")
-                                onoff $1 $PORT4
+			"Relay 4")
+				onoff $1 $PORT4
 				;;
-                        "ALL")
+			"ALL")
 				onoff $1 $PORT1
 				onoff $1 $PORT2
 				onoff $1 $PORT3
 				onoff $1 $PORT4
 				;;
-                        "EXIT")
-                                break
-                                ;;
-                         *)
+			"EXIT")
+				break
+				;;
+			 *)
 				echo "Make a Selection"
 				;;
-	        esac
+		esac
 	done
 }
 function onoff {
