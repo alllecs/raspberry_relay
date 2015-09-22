@@ -31,16 +31,16 @@ function uninit {
 
 function res {
 	for i in $@; do
-                ZN=`tail -n 1 $GPIO/gpio$i/value`
-                if [ "$ZN" = "1" ]; then
-                        echo 0 > $GPIO/gpio$i/value
-                        sleep 3
-                        echo 1 > $GPIO/gpio$i/value
-                else
-                        echo 1 > $GPIO/gpio$i/value
-                        sleep 3
-                        echo 0 > $GPIO/gpio$i/value
-                fi
+		ZN=`tail -n 1 $GPIO/gpio$i/value`
+		if [ "$ZN" = "1" ]; then
+			echo 0 > $GPIO/gpio$i/value
+			sleep 3
+			echo 1 > $GPIO/gpio$i/value
+		else
+			echo 1 > $GPIO/gpio$i/value
+			sleep 3
+			echo 0 > $GPIO/gpio$i/value
+		fi
 	done
 }
 
@@ -76,43 +76,46 @@ function reset {
 				;;
 	        esac
 	done
-
 }
 
-function onoff {
-	echo $1 > $GPIO/gpio$2/value
-}
+function pow {
+       	clear
+        echo "Reset"
 
-function power {
-	clear
-	echo "Power management"
+        options=("Relay 1" "Relay 2" "Relay 3" "Relay 4" "ALL" "EXIT")
+        select on in "${options[@]}"
 
-	options=("Power ON" "Power OFF" "EXIT")
-	
-	select on in "${options[@]}"
-
-	do
-        	case $on in
-	                "Power ON")
-				onoff 0 $PORT1
-				onoff 0 $PORT2
-				onoff 0 $PORT3
-				onoff 0 $PORT4
-                	        ;;
-        	        "Power OFF")
-				onoff 1 $PORT1
-				onoff 1 $PORT2
-				onoff 1 $PORT3
-				onoff 1 $PORT4
+        do
+                case $on in
+                        "Relay 1")
+				onoff $1 $PORT1 
 				;;
-        	        "EXIT")
-				break
+                        "Relay 2")
+                                onoff $1 $PORT2
 				;;
-               		 *)
+                        "Relay 3")
+                                onoff $1 $PORT3
+				;;
+                        "Relay 4")
+                                onoff $1 $PORT4
+				;;
+                        "ALL")
+				onoff $1 $PORT1
+				onoff $1 $PORT2
+				onoff $1 $PORT3
+				onoff $1 $PORT4
+				;;
+                        "EXIT")
+                                break
+                                ;;
+                         *)
 				echo "Make a Selection"
 				;;
 	        esac
 	done
+}
+function onoff {
+	echo $1 > $GPIO/gpio$2/value
 }
 
 function menu {
@@ -120,9 +123,11 @@ function menu {
 
 	echo 
 	echo -e "\t\tDevice power management\n"
-	echo -e "\t1. Power management"
-	echo -e "\t2. Reset"
-	echo -e "\t3. Information"
+	echo -e "\t1. On"
+	echo -e "\t2. Off"
+	echo -e "\t3. Reset"
+	echo -e "\t4. Information"
+	echo -e "\t5. Safety shutdown"
 	echo -e "\t0. Exit"
 	echo -en "\t\tPlease Make a Selection:"
 
@@ -139,18 +144,28 @@ while [ $? -ne 1 ]
 			break
 			;;
 		1)
-			power
+			pow 0
 			;;
 		2)
-			reset
+			pow 1
 			;;
 		3)
+			reset
+			;;
+		4)
 			clear
 			echo "web address http://192.168.3.1/admin/index2.html"
 			echo "Date: "
 			date
-			ifconfig usb0
+			ifconfig eth0
+			ifconfig wlan0
 			;;
+		5)
+			onoff 1 $PORT1
+			onoff 1 $PORT2
+			onoff 1 $PORT3
+			onoff 1 $PORT4
+				;;
 		*)
 			clear
 			echo "Make a Selection"
@@ -160,5 +175,5 @@ while [ $? -ne 1 ]
 	echo -en "\n\n\tPress to continue"
 	read -n 1 line
 	done
-uninit
+#uninit
 clear
