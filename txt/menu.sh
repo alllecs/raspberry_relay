@@ -31,13 +31,16 @@ function uninit {
 
 function res {
 	for i in $@; do
-		echo 1 > $GPIO/gpio$i/value
-	done
-
-        sleep 3
-
-	for i in $@; do
-		echo 0 > $GPIO/gpio$i/value
+                ZN=`tail -n 1 $GPIO/gpio$i/value`
+                if [ "$ZN" = "1" ]; then
+                        echo 0 > $GPIO/gpio$i/value
+                        sleep 3
+                        echo 1 > $GPIO/gpio$i/value
+                else
+                        echo 1 > $GPIO/gpio$i/value
+                        sleep 3
+                        echo 0 > $GPIO/gpio$i/value
+                fi
 	done
 }
 
