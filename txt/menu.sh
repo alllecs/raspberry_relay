@@ -45,7 +45,7 @@ function res {
 }
 
 function reset {
-       	clear
+	clear
 	echo "Reset"
 
 	options=("Reset 1 Relay" "Reset 2 Relay" "Reset 3 Relay" "Reset 4 Relay" "Reset ALL" "EXIT")
@@ -79,7 +79,7 @@ function reset {
 }
 
 function pow {
-       	clear
+	clear
 	echo "Reset"
 
 	options=("Relay 1" "Relay 2" "Relay 3" "Relay 4" "ALL" "EXIT")
