@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta charset=utf-8" />
+		<meta http-equiv="refresh" content="60" />
 		<style>
                 table {
                         width: 1000px; /* Ширина таблицы */

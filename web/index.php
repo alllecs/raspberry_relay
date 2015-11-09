@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<meta content="text/html"; charset="utf-8"/>
-		<meta http-equiv="refresh" content="60" />
 		
 		<title>My site</title>
 	</head>
