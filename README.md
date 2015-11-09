@@ -68,7 +68,7 @@ c [официального сайта](https://www.raspberrypi.org/downloads/).
   vi /etc/network/interfaces
 ````
 Добавить или заменить:
-
+если статический ip адрес
 ````
 auto eth0
 allow-hotplug eth0
@@ -78,8 +78,13 @@ iface eth0 inet static
         network 192.168.1.0
         broadcast 192.168.1.255
 ````
+если получать ip по dhcp
+````
+ auto eth0
+ allow-hotplug eth0
+ iface eth0 inet dhcp
+````
 Перезапустить rpi.
-
 Для включение ssh сервера на rpi выполните команду:
 ````
   raspi-config
@@ -89,6 +94,7 @@ iface eth0 inet static
 нажмите Enable
 для выхода нажмите Finish
 
+Если rpi не имеет доступ в интернет.
 Подключите rpi к ПК по интерфейсу Ethernet.
 
 Для настройки соединения ПК и rpi откройте файл
@@ -96,9 +102,9 @@ iface eth0 inet static
 
 Добавьте:
 ````
-auto eth1
-allow-hotplug eth1
-iface eth1 inet static
+ auto eth1
+ allow-hotplug eth1
+ iface eth1 inet static
         address 192.168.1.1
         netmask 255.255.255.0
         network 192.168.1.0
@@ -119,10 +125,16 @@ iface eth1 inet static
 ````
   export http_proxy=http://ip_адрес_ПК:порт
 ````
-Для работы веб интерфейса на rpi необходимо устновить пакет apache2 и php5
-Это можно сделать командой:
+При получении rpi доступа в интернет
+необходимо установить пакеты:
 ````
-  apt-get install apache2 php5 -y
+ vim
+ i2c-tools
+ php5
+ apache2
+ python
+ ajaxterm
+ motion
 ````
 Для работы некоторых команд выполняющихся по веб интерфейсу
 необходимо ввести:
@@ -136,19 +148,21 @@ iface eth1 inet static
 После настройки rpi появится возможность 
 загружать файлы на rpi.
 
-Склонируйте репозиторий на инструментальную ЭВМ
+Склонируйте репозиторий на инструментальную ЭВМ или сразу на rpi
 Это можно сделать командой:
 ````
   git clone https://github.com/alllecs/raspberry_relay.git
 ````
-Перенос файлов на Raspberry Pi. По необходимости
-создайте отсутствующие каталоги на rasperry pi.
+Перенос файлов на rpi. По необходимости
+создайте отсутствующие каталоги на rpi.
 
-Для удобства подключения и переноса файлов на rpi 
+Для удобства подключения и переноса файлов на rpi
+сгенерируйте ключ ssh-keygen 
 скопируйте файл .ssh/id_rsa.pub со своего ПК
-на Raspberry Pi в файл .ssh/authorized_keys
+на rpi в файл .ssh/authorized_keys
 с помощью команд:
 ````
+  ssh-keygen
   cd .ssh
   ssh-copy-id -i id_rsa.pub pi@192.168.1.2:
   pi@192.168.1.2 password: raspberry
@@ -164,7 +178,8 @@ iface eth1 inet static
     HostName 192.168.1.2
     User root
 ````
-После чего можно подключаться к Raspberry Pi командой:
+где 192.168.1.2 ip адрес rpi
+После чего можно подключаться к rpi командой:
 ````
   ssh rpi
 ````
@@ -175,18 +190,18 @@ iface eth1 inet static
 ````
   scp ${REPO}/txt/menu.sh rpi:/usr/local/bin/
 ````
-Перенесите файл relay.sh из каталога bin/  в каталог /var/www/
+Перенесите файл relay.sh из каталога bin/  в каталог /var/www/html/
 ````
   scp ${REPO}/bin/relay.sh rpi:/var/www/
 ````
-Перенесите файл index.php из каталога web/ в каталог /var/www/
+Перенесите файл index.php из каталога web/ в каталог /var/www/html/
 ````
-  scp ${REPO}/web/index.php rpi:/var/www/
+  scp ${REPO}/web/index.php rpi:/var/www/html/
 ````
 Перенесите все файлы кроме index.php из каталога web/
-в каталог /var/www/web/ 
+в каталог /var/www/html/
 ````
-  scp ${REPO}/web/*.php rpi:/var/www/web/
+  scp ${REPO}/web/*.php rpi:/var/www/html/
 ````
 Для использования веб интерфейса необходимо перейти по ссылке
 [RaspberryPi](http://192.168.1.2/)
