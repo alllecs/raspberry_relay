@@ -12,6 +12,7 @@
 			<li><a href="status.php" target="window-1">Состояние</a></li>
 			<li><a href="info.php" target="window-1">Информация</a></li>
 			<li><a href="cam.php" target="window-1">Камера</a></li>
+			<li><a href="http://localhost:8022" target="window-1">Терминал</a></li>
 		</ol>
 	</body>
 </html>
