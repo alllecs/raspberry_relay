@@ -298,5 +298,5 @@ echo 19 > /sys/class/gpio/export
 
 Выполните:
 
-	update-rc.d startscr.sh defaults
+	update-rc.d startpin.sh defaults
 
