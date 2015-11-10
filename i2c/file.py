@@ -21,8 +21,11 @@ lcd.lcd_clear()
 
 def newfunc(gpionum):
 	f1 = open('/sys/class/gpio/gpio%d/value' % gpionum)
-
-	return f1.readline(1)
+	A = f1.readline(1)
+	if A:
+		return "0"
+	else:
+		return "1"
 
 lcd.lcd_display_string("Relay 1:" + newfunc(5) + " Relay 2:" + newfunc(6), 1)
 lcd.lcd_display_string("Relay 3:" + newfunc(13) + " Relay 4:" + newfunc(19), 2)
