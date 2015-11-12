@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import RPi.GPIO as GPIO
 import lcddriver
 import socket
 import fcntl
@@ -22,7 +23,7 @@ lcd.lcd_clear()
 def newfunc(gpionum):
 	f1 = open('/sys/class/gpio/gpio%d/value' % gpionum)
 	A = f1.readline(1)
-	if A:
+	if A == "1":
 		return "0"
 	else:
 		return "1"
