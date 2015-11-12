@@ -6,27 +6,27 @@ PORT3=13
 PORT4=19
 GPIO=/sys/class/gpio
 
-function enter {
+#function enter {
 #	set -x
-	echo $1 > $GPIO/export
-	echo $2 > $GPIO/gpio$1/direction
-	echo $3 > $GPIO/gpio$1/value
+#	echo $1 > $GPIO/export
+#	echo $2 > $GPIO/gpio$1/direction
+#	echo $3 > $GPIO/gpio$1/value
 #	set +x
-}
+#}
 
-function init {
-	enter $PORT1 out 1 
-	enter $PORT2 out 1
-	enter $PORT3 out 1
-	enter $PORT4 out 1
-}
+#function init {
+#	enter $PORT1 out 1 
+#	enter $PORT2 out 1
+#	enter $PORT3 out 1
+#	enter $PORT4 out 1
+#}
 
-function uninit {
-	echo $PORT1 > $GPIO/unexport
-	echo $PORT2 > $GPIO/unexport
-	echo $PORT3 > $GPIO/unexport
-	echo $PORT4 > $GPIO/unexport
-}
+#function uninit {
+#	echo $PORT1 > $GPIO/unexport
+#	echo $PORT2 > $GPIO/unexport
+#	echo $PORT3 > $GPIO/unexport
+#	echo $PORT4 > $GPIO/unexport
+#}
 
 
 function res {
@@ -134,7 +134,7 @@ function menu {
 	read -n 1 option
 }
 
-init
+#init
 
 while [ $? -ne 1 ]
 	do
