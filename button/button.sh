@@ -12,18 +12,6 @@ IO3="13"
 IO4="19"
 GPIO=/sys/class/gpio
 
-echo $BUT1 > $GPIO/export
-echo $BUT2 > $GPIO/export
-echo $BUT3 > $GPIO/export
-echo $BUT4 > $GPIO/export
-echo $BUT5 > $GPIO/export
-
-echo in > $GPIO/gpio$BUT1/direction
-echo in > $GPIO/gpio$BUT2/direction
-echo in > $GPIO/gpio$BUT3/direction
-echo in > $GPIO/gpio$BUT4/direction
-echo in > $GPIO/gpio$BUT5/direction
-
 function offall {
 	i=$1
 	ZN=`tail -n 1 $GPIO/gpio$i/value`
@@ -91,9 +79,3 @@ do
 	sleep 1
 	let J=J+1
 done
-
-echo $BUT1 > $GPIO/unexport
-echo $BUT2 > $GPIO/unexport
-echo $BUT3 > $GPIO/unexport
-echo $BUT4 > $GPIO/unexport
-echo $BUT5 > $GPIO/unexport
