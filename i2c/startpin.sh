@@ -27,7 +27,8 @@ function indirect {
 
 function highdir {
 	for i in $@; do
-		sudo bash -c 'echo high > $GPIO/gpio$i/direction'
+#		sudo bash -c 'echo high > $GPIO/gpio$i/direction'
+		echo high > $GPIO/gpio$i/direction
 	done
 }
 function indirect {
@@ -37,5 +38,5 @@ function indirect {
 }
 exp $IO1 $IO2 $IO3 $IO4 $BUT1 $BUT2 $BUT3 $BUT4 $BUT5
 indirect $BUT1 $BUT2 $BUT3 $BUT4 $BUT5
-outdirect $IO1 $IO2 $IO3 $IO4
-#highdir $IO1 $IO2 $IO3 $IO4
+#outdirect $IO1 $IO2 $IO3 $IO4
+highdir $IO1 $IO2 $IO3 $IO4
