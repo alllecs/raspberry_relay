@@ -44,6 +44,7 @@ function butt {
 		0)   
 #			echo "Кнопка нажата"
 			power $n
+			python i2c/file.py
 			;;
 		*)
 			echo "Error"
