@@ -235,3 +235,7 @@ iface eth0 inet static
 перейти в раздел "состояние" и нажать кнопку "unexport"
 для использованных реле.
 
+Для настройки дисплея см. [raspberrypi-i2c-display-howto.txt](https://github.com/alllecs/raspberry_relay/blob/master/raspberrypi-i2c-display-howto.txt)
+Для настройки видеосервера см. [raspberrypi-video-howto.txt](https://github.com/alllecs/raspberry_relay/blob/master/raspberrypi-video-howto.txt)
+Для настройки Wi-Fi см. [raspberrypi-wifi-howto.txt](https://github.com/alllecs/raspberry_relay/blob/master/raspberrypi-wifi-howto.txt)
+Для настройки часов реального времени см. [raspberrypi-i2c-clock-howto.txt](https://github.com/alllecs/raspberry_relay/blob/master/raspberrypi-i2c-clock-howto.txt)
