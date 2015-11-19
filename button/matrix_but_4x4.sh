@@ -1,9 +1,9 @@
 #!/bin/bash
 
-BUT0=25
-BUT1=24
-BUT2=23
-BUT3=18
+BUT0=18
+BUT1=23
+BUT2=24
+BUT3=25
 BUT4=12
 BUT5=16
 BUT6=20
@@ -72,14 +72,13 @@ i=0
 while [ $i -lt 4 ]; do
 	var1="BUT$i"
 	ADDR=${GPIO}/gpio${!var1}/value
-#	powon $BUT0 $BUT1 $BUT2 $BUT3
 	echo 0 > ${ADDR}
 	j=4
 	while [ $j -lt 8 ]; do
 		var2="BUT$j"
 		ADDR1=${GPIO}/gpio${!var2}/value
 		ZN=`tail -n 1 ${GPIO}/gpio${!var2}/value`
-		if [ $ZN -eq 1 ]; then
+		if [ $ZN -eq 0 ]; then
 			NUM=$[$i*4+$j-3]
 			echo "Кнопка $NUM нажата"
 		fi
@@ -87,7 +86,6 @@ while [ $i -lt 4 ]; do
 		done
 	echo 1 > ${ADDR}
 	i=$[$i+1]
-#	powoff $BUT0 $BUT1 $BUT2 $BUT3
 	done
 
 unexp $BUT0 $BUT1 $BUT2 $BUT3 $BUT4 $BUT5 $BUT6 $BUT7
