@@ -324,3 +324,47 @@ iface eth0 inet static
 ````
 Если все настроено правильно, на дисплей будет выведено
 время, состояния реле, ip адрес rpi.
+
+##Настройка dhcp сервера на rpi
+
+Необходимо установить пакет, выполнив:
+````
+  apt-get install isc-dhcp-server
+````
+Для выбора интерфеса для dhcp сервера,
+необходимо перейти в файл
+````
+  sudo vim /etc/default/isc-dhcp-server
+````
+Добавить необходимый интерфейс:
+````
+  INTERFACES="eth1"
+````
+Для настройки dhcp необходимо перейти
+в файл или создать его:
+````
+  vim /etc/dhcp/dhcpd.conf
+````
+Содержание файла:
+````
+ authoritative;
+ default-lease-time 600;
+ max-lease-time 7200;
+ #log-facility local7;
+
+ subnet 10.223.254.0 netmask 255.255.255.0
+ {
+	option subnet-mask 255.255.255.0;
+	option routers 10.223.254.1;
+	option broadcast-address 10.223.254.255;
+	option domain-name-servers 10.223.254.3, 8.8.8.8;
+	option domain-name "linux-asus-i386";
+	range 10.223.254.2 10.223.254.199;
+ }
+````
+Перезапуск dhcp-сервера с помощью команды:
+````
+  service isc-dhcp-server restart
+````
+Если все сделано правильно, то при перезапуске
+не будет ошибки.
