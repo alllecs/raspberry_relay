@@ -230,6 +230,8 @@ iface eth0 inet static
   git clone https://github.com/alllecs/raspberry_relay.git
 ````
 Из папки raspberry_relay необходимо перенести файлы:
+(Если в /var/www/ присутствуюет папка html,
+то файлы переносятся в /var/www/html/)
 ````
   cp txt/menu.sh /usr/local/bin/
   cp bin/relay.sh /var/www/
