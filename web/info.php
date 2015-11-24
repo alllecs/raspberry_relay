@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
+		<meta http-equiv="refresh" content="60" />
 	</head>
 	
 
@@ -12,10 +13,10 @@
 	system("date");?>
 	<br>
 	<br>
-	<h3><pre>
+	<h2><pre>
 	<?php
 	system("sudo ifconfig eth0");
-	?></pre></h3>
+	?></pre></h2>
 	<br>
 	<br>
 	<br>
