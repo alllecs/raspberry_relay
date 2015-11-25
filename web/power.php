@@ -32,12 +32,27 @@
 		echo $st;
 	}
 
-	function power($numb) {
-		system("sudo bash -c \"echo 0 > /sys/class/gpio/gpio$numb/value\"");
+	function color($numb) {
+		$st=exec("sudo cat /sys/class/gpio/gpio$numb/value");
+		if($st == '0') {
+			$st="onoffred.png";
+		} else if($st == '1') {
+			$st="onoffgreen.png";
+		} else {
+			$st="Проверьте 'Export'";
+		}
+		echo $st;
 	}
 
 	function powoff($numb) {
-		system("sudo bash -c \"echo 1 > /sys/class/gpio/gpio$numb/value\"");
+		$st=exec("sudo cat /sys/class/gpio/gpio$numb/value");
+		if($st == '0') {
+			system("sudo bash -c \"echo 1 > /sys/class/gpio/gpio$numb/value\"");
+		} else if($st == '1') {
+			system("sudo bash -c \"echo 0 > /sys/class/gpio/gpio$numb/value\"");
+		} else {
+			$st="Проверьте 'Export'";
+		}
 	}
 
 	function res($numb) {
@@ -76,36 +91,19 @@
         }
 
 
-
-	if(isset( $_GET['off1'] ) ) {
+	if(isset( $_GET['on1'] ) ) {
 		powoff(5);
 	}
-	if(isset( $_GET['off2'] ) ) {
+	if(isset( $_GET['on2'] ) ) {
 		powoff(6);
 	}
-	if(isset( $_GET['off3'] ) ) {
+	if(isset( $_GET['on3'] ) ) {
 		powoff(13);
 	}
-	if(isset( $_GET['off4'] ) ) {
+	if(isset( $_GET['on4'] ) ) {
 		powoff(19);
 	}
 
-	if(isset( $_GET['on1'] ) ) {
-		power(5);
-	}
-	if(isset( $_GET['on2'] ) ) {
-		power(6);
-	}
-	if(isset( $_GET['on3'] ) ) {
-		power(13);
-	}
-	if(isset( $_GET['on4'] ) ) {
-		power(19);
-	}
-
-	if( isset( $_GET['on'] ) ) {
-		system("sudo ./relay.sh 0");
-	}
 	if( isset( $_GET['off'] ) ) {
 		system("sudo ./relay.sh 1");
 	}
@@ -114,14 +112,10 @@
 	<center><p><h2>Управление питанием</h2></p></center>
 
 	<table border="1">
-	<tr><th>№</th><th>Статус</th><th>Включить</th><th>Выключить</th><th>Перезагрузить</th></tr>
+	<tr><th>№</th><th>Статус</th><th>Вкл/Выкл</th><th>Перезагрузить</th></tr>
 	<tr><td>1</td><td><?php ca(5);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on1" value=""/>
-	</form>
-	</td><td>
-	<form method="GET">
-		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off1" value=""/>
+		<input type="submit" style="background-image: url(<?php color(5);?>); width: 35px; height: 35px; border: none;" name="on1" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
@@ -130,11 +124,7 @@
 	</td></tr>
 	<tr><td>2</td><td><?php ca(6);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on2" value=""/>
-	</form>
-	</td><td>
-	<form method="GET">
-		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off2" value=""/>
+		<input type="submit" style="background-image: url(<?php color(6);?>); width: 35px; height: 35px; border: none;" name="on2" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
@@ -143,11 +133,7 @@
 	</td></tr>
 	<tr><td>3</td><td><?php ca(13);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on3" value=""/>
-	</form>
-	</td><td>
-	<form method="GET">
-		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off3" value=""/>
+		<input type="submit" style="background-image: url(<?php color(13);?>); width: 35px; height: 35px; border: none;" name="on3" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
@@ -156,22 +142,14 @@
 	</td></tr>
 	<tr><td>4</td><td><?php ca(19);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on4" value=""/>
-	</form>
-	</td><td>
-	<form method="GET">
-		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off4" value=""/>
+		<input type="submit" style="background-image: url(<?php color(19);?>); width: 35px; height: 35px; border: none;" name="on4" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
 		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res4" value=""/>
 	</form>
 	</td></tr>
-	<tr><td>Все</td><td>---</td><td>
-	<form method="GET">
-		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on" value=""/>
-	</form>
-	</td><td>
+	<tr><td>Все</td><td>------</td><td>
 	<form method="GET">
 		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off" value=""/>
 	</form>
@@ -180,7 +158,6 @@
 		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res" value=""/>
 	</form>
 	</td></tr>
-
 	</body>
 </html>
 
