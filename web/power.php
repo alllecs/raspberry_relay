@@ -70,9 +70,9 @@
 		$st4=exec("sudo cat /sys/class/gpio/gpio19/value");
 		
 		if($st1 == 0 && $st2 == 0 && $st3 == 0 && $st4 == 0) {	
-			system("sudo ../relay.sh 1");
+			system("sudo ./relay.sh 1");
 			sleep(3);
-			system("sudo ../relay.sh 0");
+			system("sudo ./relay.sh 0");
 		}
         }
 
@@ -105,10 +105,10 @@
 	}
 
 	if( isset( $_GET['on'] ) ) {
-		system("sudo ../relay.sh 0");
+		system("sudo ./relay.sh 0");
 	}
 	if( isset( $_GET['off'] ) ) {
-		system("sudo ../relay.sh 1");
+		system("sudo ./relay.sh 1");
 	}
 	?> 
 
@@ -118,67 +118,67 @@
 	<tr><th>№</th><th>Статус</th><th>Включить</th><th>Выключить</th><th>Перезагрузить</th></tr>
 	<tr><td>1</td><td><?php ca(5);?></td><td>
 	<form method="GET">
-		<input type="submit" name="on1" value="вкл" />
+		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on1" value="вкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="off1" value="выкл" />
+		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off1" value="выкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="res1" value="res" />
+		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res1" value="res"/>
 	</form>
 	</td></tr>
 	<tr><td>2</td><td><?php ca(6);?></td><td>
 	<form method="GET">
-		<input type="submit" name="on2" value="вкл" />
+		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on2" value="вкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="off2" value="выкл" />
+		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off2" value="выкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="res2" value="res" />
+		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res2" value="res"/>
 	</form>
 	</td></tr>
 	<tr><td>3</td><td><?php ca(13);?></td><td>
 	<form method="GET">
-		<input type="submit" name="on3" value="вкл" />
+		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on3" value="вкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="off3" value="выкл" />
+		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off3" value="выкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="res3" value="res" />
+		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res3" value="res"/>
 	</form>
 	</td></tr>
 	<tr><td>4</td><td><?php ca(19);?></td><td>
 	<form method="GET">
-		<input type="submit" name="on4" value="вкл" />
+		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on4" value="вкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="off4" value="выкл" />
+		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off4" value="выкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="res4" value="res" />
+		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res4" value="res"/>
 	</form>
 	</td></tr>
 	<tr><td>Все</td><td>---</td><td>
 	<form method="GET">
-		<input type="submit" name="on" value="вкл" />
+		<input type="submit" style="background-image: url(onoffgreen.png); width: 35px; height: 35px; border: none;" name="on" value="вкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="off" value="выкл" />
+		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off" value="выкл"/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" name="res" value="res" />
+		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res" value="res"/>
 	</form>
 	</td></tr>
 
