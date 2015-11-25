@@ -21,7 +21,7 @@
 	<br>
 	<br>
 	<FORM action=info.php method=POST>
-	<INPUT Type="submit" name="submit"  VALUE="Обновить страницу"/>
+	<INPUT Type="submit" style="background-image: url(button_refresh.png); width: 127px; height: 127px; border: none;"  name="submit"  value="Обновить"/>
 	</FORM>
 	</center>
 	</body>
