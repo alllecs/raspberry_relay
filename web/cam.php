@@ -17,7 +17,7 @@
         <body text="0000CC" bgcolor="#F5F5F5" link="#33FF00" alink="#CC0099" vli
 nk="#00FFFF">
 
-        <img src="http://192.168.1.2:8081">
+        <img src="localhost:8081">
 
         </body>
 </html>
