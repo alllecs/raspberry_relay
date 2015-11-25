@@ -2,7 +2,7 @@
 	<head>
 		<meta content="text/html"; charset="utf-8"/>
 		
-		<title>My site</title>
+		<title>YYY web-interface</title>
 	</head>
 
 	<frameset cols="20%, *" border="0">
