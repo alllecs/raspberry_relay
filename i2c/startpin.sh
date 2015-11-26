@@ -31,12 +31,6 @@ function highdir {
 		echo high > $GPIO/gpio$i/direction
 	done
 }
-function indirect {
-	for i in $@; do
-		echo out > $GPIO/gpio$i/direction
-	done
-}
 exp $IO1 $IO2 $IO3 $IO4 $BUT1 $BUT2 $BUT3 $BUT4 $BUT5
 indirect $BUT1 $BUT2 $BUT3 $BUT4 $BUT5
-#outdirect $IO1 $IO2 $IO3 $IO4
 highdir $IO1 $IO2 $IO3 $IO4
