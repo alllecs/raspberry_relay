@@ -3,8 +3,8 @@
 BUT1=16
 BUT2=20
 BUT3=21
-BUT4=26
-BUT5=12
+BUT4=12
+BUT5=26
 J=0
 IO1=5
 IO2=6
@@ -44,7 +44,7 @@ function butt {
 		1)   
 #			echo "Кнопка нажата"
 			power $n
-			python i2c/file.py
+			python ../i2c/file.py
 			;;
 		*)
 			echo "Error"
