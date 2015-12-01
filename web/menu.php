@@ -4,7 +4,7 @@
 		<title>Устройство управления</title>
 	</head>
 
-	<body bgcolor="#F5F5F5">
+	<body>
 	<tr>
 	<p><a href="https://www.niisi.ru/"><img src="https://www.niisi.ru/PAH2015.png" width="100" height="100" alt="NIISI RAN"></a></p>
         <td align="left" bgcolor="#99CCFF" height="25" valign="top" width="20">

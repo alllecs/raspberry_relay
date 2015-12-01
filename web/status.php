@@ -15,7 +15,7 @@
 		</style>
 	</head>
 
-	<body text="0000CC" bgcolor="#F5F5F5" link="#33FF00" alink="#CC0099" vlink="#00FFFF">
+	<body text="0000CC" link="#33FF00" alink="#CC0099" vlink="#00FFFF">
 
 	<center><p><h2>Просмотр состояния</h2></p></center>
 		<?php

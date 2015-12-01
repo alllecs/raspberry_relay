@@ -4,7 +4,7 @@
 		<title>Главная страница</title>
 	</head>
 
-	<body bgcolor="#F5F5F5">
+	<body>
 	<center>
 		<p><h2>Устройство управления розеточкой</h2></p>
 		<p>Ip addr: <?php

@@ -14,7 +14,7 @@
                 </style>
         </head>
 
-        <body text="0000CC" bgcolor="#F5F5F5" link="#33FF00" alink="#CC0099" vli
+        <body text="0000CC" link="#33FF00" alink="#CC0099" vli
 nk="#00FFFF">
 
         <img src="localhost:8081">

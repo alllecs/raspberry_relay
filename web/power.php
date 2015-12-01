@@ -16,7 +16,7 @@
 
 	</head>
 
-	<body bgcolor="#F5F5F5">
+	<body>
 	<?php
 
 
@@ -35,9 +35,9 @@
 	function color($numb) {
 		$st=exec("sudo cat /sys/class/gpio/gpio$numb/value");
 		if($st == '0') {
-			$st="onoffred.png";
+			$st="button_turn_off_01.png";
 		} else if($st == '1') {
-			$st="onoffgreen.png";
+			$st="button_turn_on_01.png";
 		} else {
 			$st="Проверьте 'Export'";
 		}
@@ -115,47 +115,47 @@
 	<tr><th>№</th><th>Статус</th><th>Вкл/Выкл</th><th>Перезагрузить</th></tr>
 	<tr><td>1</td><td><?php ca(5);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(<?php color(5);?>); width: 35px; height: 35px; border: none;" name="on1" value=""/>
+		<input type="submit" style="background-image: url(<?php color(5);?>); width: 80px; height: 80px; border: none;" name="on1" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res1" value=""/>
+		<input type="submit" style="background-image: url(button_refresh.png); width: 80px; height: 80px; border: none;" name="res1" value=""/>
 	</form>
 	</td></tr>
 	<tr><td>2</td><td><?php ca(6);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(<?php color(6);?>); width: 35px; height: 35px; border: none;" name="on2" value=""/>
+		<input type="submit" style="background-image: url(<?php color(6);?>); width: 80px; height: 80px; border: none;" name="on2" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res2" value=""/>
+		<input type="submit" style="background-image: url(button_refresh.png); width: 80px; height: 80px; border: none;" name="res2" value=""/>
 	</form>
 	</td></tr>
 	<tr><td>3</td><td><?php ca(13);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(<?php color(13);?>); width: 35px; height: 35px; border: none;" name="on3" value=""/>
+		<input type="submit" style="background-image: url(<?php color(13);?>); width: 80px; height: 80px; border: none;" name="on3" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res3" value=""/>
+		<input type="submit" style="background-image: url(button_refresh.png); width: 80px; height: 80px; border: none;" name="res3" value=""/>
 	</form>
 	</td></tr>
 	<tr><td>4</td><td><?php ca(19);?></td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(<?php color(19);?>); width: 35px; height: 35px; border: none;" name="on4" value=""/>
+		<input type="submit" style="background-image: url(<?php color(19);?>); width: 80px; height: 80px; border: none;" name="on4" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res4" value=""/>
+		<input type="submit" style="background-image: url(button_refresh.png); width: 80px; height: 80px; border: none;" name="res4" value=""/>
 	</form>
 	</td></tr>
 	<tr><td>Все</td><td>------</td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoffred.png); width: 35px; height: 35px; border: none;" name="off" value=""/>
+		<input type="submit" style="background-image: url(button_turn_off_01.png); width: 80px; height: 80px; border: none;" name="off" value=""/>
 	</form>
 	</td><td>
 	<form method="GET">
-		<input type="submit" style="background-image: url(onoff.png); width: 35px; height: 35px; border: none;" name="res" value=""/>
+		<input type="submit" style="background-image: url(button_refresh.png); width: 80px; height: 80px; border: none;" name="res" value=""/>
 	</form>
 	</td></tr>
 	</body>

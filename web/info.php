@@ -5,7 +5,7 @@
 	</head>
 	
 
-	<body bgcolor="#F5F5F5">
+	<body>
 	<center>
 	<p><h2>Информация об устройстве</h2></p>
 	<br>
@@ -20,8 +20,10 @@
 	<br>
 	<br>
 	<br>
+	<br>
+	<br>
 	<FORM action=info.php method=POST>
-	<INPUT Type="submit" style="background-image: url(button_refresh.png); width: 127px; height: 127px; border: none;"  name="submit"  value="Обновить"/>
+	<INPUT Type="submit" style="background-image: url(button_refresh.png); width: 85px; height: 85px;"  name="submit"  value="Обновить"/>
 	</FORM>
 	</center>
 	</body>
