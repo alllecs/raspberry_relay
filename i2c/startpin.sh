@@ -34,3 +34,4 @@ function highdir {
 exp $IO1 $IO2 $IO3 $IO4 $BUT1 $BUT2 $BUT3 $BUT4 $BUT5
 indirect $BUT1 $BUT2 $BUT3 $BUT4 $BUT5
 highdir $IO1 $IO2 $IO3 $IO4
+/home/pi/raspberry_relay/i2c/file_simple.py > /dev/null &
