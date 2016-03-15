@@ -80,7 +80,7 @@ function reset {
 
 function pow {
 	clear
-	echo "Reset"
+	echo "Power"
 
 	options=("Relay 1" "Relay 2" "Relay 3" "Relay 4" "ALL" "EXIT")
 	select on in "${options[@]}"
